@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XGames | Next-Gen Gaming</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS VARIABLES FOR BRANDING */
+        :root {
+            --primary: #00f2ff;
+            --secondary: #7000ff;
+            --bg-dark: #0a0a0c;
+            --card-bg: #16161a;
+            --text-main: #ffffff;
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-style: italic;
+            animation: glitch 3s infinite;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--primary);
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+        }
+
+        .btn-main {
+            padding: 15px 40px;
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .btn-main:hover {
+            background: var(--primary);
+            box-shadow: 0 0 30px var(--primary);
+            color: black;
+        }
+
+        /* PAGE 2: CREW / ABOUT */
+        .crew-section {
+            padding: 100px 8%;
+            background: var(--bg-dark);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .section-title .underline {
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 10px auto;
+        }
+
+        .crew-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .member-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 10px 40px rgba(112, 0, 255, 0.2);
+        }
+
+        .member-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .member-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .role {
+            color: var(--secondary);
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            background: #050505;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* ANIMATIONS */
+        @keyframes glitch {
+            0% { text-shadow: 2px 0 red, -2px 0 blue; }
+            50% { text-shadow: -2px 0 red, 2px 0 blue; }
+            100% { text-shadow: 2px 0 red, -2px 0 blue; }
+        }
+
+        /* SCROLL BEHAVIOR */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">XGAMES</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#crew">Leadership</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Community</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>XGAMES BRAND</h1>
+        <p>THE FUTURE OF DIGITAL DOMINANCE</p>
+        <button class="btn-main" onclick="document.getElementById('crew').scrollIntoView()">Meet The Legends</button>
+    </section>
+
+    <section class="crew-section" id="crew">
+        <div class="section-title">
+            <h2>THE MASTERS</h2>
+            <div class="underline"></div>
+        </div>
+
+        <div class="crew-container">
+            <div class="member-card">
+                <i class="fas fa-crown"></i>
+                <div class="role">Visionary & Founder</div>
+                <h3>Ayanh4x</h3>
+                <p>Leading XGames into the next era of competitive gaming and brand evolution.</p>
+            </div>
+
+            <div class="member-card">
+                <i class="fas fa-shield-alt"></i>
+                <div class="role">Technical Co-Owner</div>
+                <h3>Mahmudul18Rip</h3>
+                <p>Architect of infrastructure and core strategy for the XGames legacy.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 XGAMES. All Rights Reserved. Built for high-performance branding.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll and scroll-reveal effect
+        window.addEventListener('scroll', () => {
+            let nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = '#000';
+                nav.style.padding = '15px 8%';
+            } else {
+                nav.style.background = 'rgba(0, 0, 0, 0.8)';
+                nav.style.padding = '20px 8%';
+            }
+        });
+
+        // Simple console log to confirm deployment
+        console.log("XGames Site Loaded | Developed for Ayanh4x & Mahmudul18Rip");
+    </script>
+</body>
+</html>
