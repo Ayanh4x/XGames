@@ -3,269 +3,373 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XGames | Next-Gen Gaming</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>XGAMES | The Ultimate Brand</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* CSS VARIABLES FOR BRANDING */
         :root {
-            --primary: #00f2ff;
-            --secondary: #7000ff;
-            --bg-dark: #0a0a0c;
-            --card-bg: #16161a;
-            --text-main: #ffffff;
-            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --neon-blue: #00f2ff;
+            --neon-purple: #9d00ff;
+            --bg-deep: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: none; /* Custom cursor effect */
         }
 
         body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-main);
+            background: var(--bg-deep);
+            color: #fff;
+            font-family: 'Rajdhani', sans-serif;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* NAVIGATION */
+        /* CUSTOM CURSOR */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-blue);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        /* PARTICLE CANVAS */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        /* NAVIGATION - GLASSMORPHISM */
         nav {
+            position: fixed;
+            width: 90%;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 40px;
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 8%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
-            font-size: 2rem;
+            font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            font-size: 1.8rem;
+            letter-spacing: 5px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-
         .nav-links a {
+            color: #aaa;
             text-decoration: none;
-            color: white;
-            font-weight: 500;
-            transition: 0.3s;
+            margin-left: 30px;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
-            text-shadow: 0 0 10px var(--primary);
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
         }
 
         /* HERO SECTION */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
+            perspective: 1000px;
         }
 
-        .hero h1 {
-            font-size: clamp(3rem, 10vw, 6rem);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            font-style: italic;
-            animation: glitch 3s infinite;
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(4rem, 15vw, 8rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
+            position: relative;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--primary);
-            letter-spacing: 4px;
-            margin-bottom: 30px;
+        .hero-title span {
+            display: block;
+            background: linear-gradient(to bottom, #fff, #444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .btn-main {
-            padding: 15px 40px;
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: white;
-            text-transform: uppercase;
-            font-weight: bold;
-            cursor: pointer;
+        .glitch-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: var(--neon-blue);
+            opacity: 0.3;
+            animation: glitch 2s infinite linear alternate-reverse;
+        }
+
+        /* BENTO GRID (THE LEADERSHIP SECTION) */
+        .bento-section {
+            padding: 100px 10%;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 200px;
+            gap: 20px;
+        }
+
+        .bento-item {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 30px;
             position: relative;
             overflow: hidden;
-            transition: 0.4s;
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .btn-main:hover {
-            background: var(--primary);
-            box-shadow: 0 0 30px var(--primary);
-            color: black;
+        .bento-item:hover {
+            border-color: var(--neon-blue);
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 242, 255, 0.1);
         }
 
-        /* PAGE 2: CREW / ABOUT */
-        .crew-section {
-            padding: 100px 8%;
-            background: var(--bg-dark);
+        .large { grid-column: span 2; grid-row: span 2; }
+        .tall { grid-row: span 2; }
+
+        .bento-item h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--neon-blue);
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 3rem;
-            color: white;
-        }
-
-        .section-title .underline {
-            width: 100px;
-            height: 4px;
-            background: var(--secondary);
-            margin: 10px auto;
-        }
-
-        .crew-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .member-card {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
-        }
-
-        .member-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--secondary);
-            box-shadow: 0 10px 40px rgba(112, 0, 255, 0.2);
-        }
-
-        .member-card i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-
-        .member-card h3 {
-            font-size: 1.8rem;
+        .owner-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--neon-purple);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
             margin-bottom: 10px;
         }
 
-        .role {
-            color: var(--secondary);
-            font-weight: bold;
+        /* BUTTONS */
+        .btn-action {
+            padding: 15px 40px;
+            background: none;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            font-family: 'Orbitron';
             text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            font-weight: bold;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
-        footer {
-            padding: 40px;
-            text-align: center;
-            background: #050505;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.8rem;
-            color: #666;
+        .btn-action:hover {
+            background: var(--neon-blue);
+            color: #000;
+            box-shadow: 0 0 50px var(--neon-blue);
         }
 
         /* ANIMATIONS */
         @keyframes glitch {
-            0% { text-shadow: 2px 0 red, -2px 0 blue; }
-            50% { text-shadow: -2px 0 red, 2px 0 blue; }
-            100% { text-shadow: 2px 0 red, -2px 0 blue; }
+            0% { transform: translate(0); }
+            20% { transform: translate(-5px, 5px); }
+            40% { transform: translate(-5px, -5px); }
+            60% { transform: translate(5px, 5px); }
+            80% { transform: translate(5px, -5px); }
+            100% { transform: translate(0); }
         }
 
-        /* SCROLL BEHAVIOR */
-        html {
-            scroll-behavior: smooth;
+        footer {
+            text-align: center;
+            padding: 50px;
+            opacity: 0.5;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .large, .tall { grid-column: span 1; grid-row: span 1; }
         }
     </style>
 </head>
 <body>
 
+    <div id="cursor"></div>
+    <canvas id="particle-canvas"></canvas>
+
     <nav>
         <div class="logo">XGAMES</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#crew">Leadership</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Community</a></li>
-        </ul>
+        <div class="nav-links">
+            <a href="#">Network</a>
+            <a href="#">Legacy</a>
+            <a href="#">Contact</a>
+        </div>
     </nav>
 
-    <section class="hero" id="home">
-        <h1>XGAMES BRAND</h1>
-        <p>THE FUTURE OF DIGITAL DOMINANCE</p>
-        <button class="btn-main" onclick="document.getElementById('crew').scrollIntoView()">Meet The Legends</button>
+    <section class="hero">
+        <div class="hero-title">
+            <div class="glitch-text">XGAMES</div>
+            <span>XGAMES</span>
+        </div>
+        <p style="letter-spacing: 10px; margin-bottom: 40px; color: var(--neon-purple);">CORE COMMAND CENTER</p>
+        <button class="btn-action">Enter Abyss</button>
     </section>
 
-    <section class="crew-section" id="crew">
-        <div class="section-title">
-            <h2>THE MASTERS</h2>
-            <div class="underline"></div>
-        </div>
-
-        <div class="crew-container">
-            <div class="member-card">
-                <i class="fas fa-crown"></i>
-                <div class="role">Visionary & Founder</div>
-                <h3>Ayanh4x</h3>
-                <p>Leading XGames into the next era of competitive gaming and brand evolution.</p>
+    <section class="bento-section">
+        <div class="bento-grid">
+            <div class="bento-item large">
+                <div class="owner-badge">System Root</div>
+                <h2>Ayanh4x</h2>
+                <p style="font-size: 1.2rem; opacity: 0.8;">The Founding Visionary. Controlling the core operations and architectural evolution of XGames. Managing high-stakes strategy and global brand positioning.</p>
+                <i class="fas fa-microchip" style="position: absolute; right: 30px; bottom: 30px; font-size: 5rem; opacity: 0.1;"></i>
             </div>
 
-            <div class="member-card">
-                <i class="fas fa-shield-alt"></i>
-                <div class="role">Technical Co-Owner</div>
-                <h3>Mahmudul18Rip</h3>
-                <p>Architect of infrastructure and core strategy for the XGames legacy.</p>
+            <div class="bento-item tall">
+                <div class="owner-badge" style="background: var(--neon-blue);">Co-Owner</div>
+                <h2>Mahmudul18Rip</h2>
+                <p>Lead Technical Strategist. Overseeing development security and high-performance infrastructure.</p>
+                <ul style="list-style: none; margin-top: 20px; font-size: 0.9rem; color: var(--neon-blue);">
+                    <li><i class="fas fa-check"></i> System Architecture</li>
+                    <li><i class="fas fa-check"></i> Brand Strategy</li>
+                    <li><i class="fas fa-check"></i> Deployment Ops</li>
+                </ul>
+            </div>
+
+            <div class="bento-item">
+                <i class="fas fa-bolt" style="color: var(--neon-blue); font-size: 1.5rem;"></i>
+                <h3 style="margin-top:10px;">Fast Load</h3>
+                <p style="font-size: 0.8rem; opacity: 0.6;">Optimized for 2026 Edge servers.</p>
+            </div>
+            
+            <div class="bento-item">
+                <i class="fas fa-globe" style="color: var(--neon-purple); font-size: 1.5rem;"></i>
+                <h3 style="margin-top:10px;">Global</h3>
+                <p style="font-size: 0.8rem; opacity: 0.6;">XGames network spanning 40+ countries.</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 XGAMES. All Rights Reserved. Built for high-performance branding.</p>
+        &copy; 2026 XGAMES ENTERTAINMENT. COORDINATES: 0.00.18.H4X
     </footer>
 
     <script>
-        // Smooth scroll and scroll-reveal effect
-        window.addEventListener('scroll', () => {
-            let nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.background = '#000';
-                nav.style.padding = '15px 8%';
-            } else {
-                nav.style.background = 'rgba(0, 0, 0, 0.8)';
-                nav.style.padding = '20px 8%';
-            }
+        // --- 1. CUSTOM CURSOR LOGIC ---
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
         });
 
-        // Simple console log to confirm deployment
-        console.log("XGames Site Loaded | Developed for Ayanh4x & Mahmudul18Rip");
+        // --- 2. ADVANCED PARTICLE SYSTEM ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.speedY = Math.random() * 1 - 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = '#00f2ff';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function createParticles() {
+            for (let i = 0; i < 100; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas();
+        createParticles();
+        animate();
+
+        // --- 3. SCROLL REVEAL ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.bento-item').forEach(item => {
+            item.style.opacity = 0;
+            item.style.transform = "translateY(50px)";
+            item.style.transition = "all 0.8s ease-out";
+            observer.observe(item);
+        });
     </script>
 </body>
 </html>
