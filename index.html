@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XGAMES | THE SINGULARITY PROTOCOL</title>
+    <title>XGAMES | Ayanh4x </title>
     
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Michroma&family=Space+Grotesk:wght@300;500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -12,12 +12,12 @@
         :root {
             --neon: #00ffcc;
             --void: #7000ff;
-            --glass: rgba(255, 255, 255, 0.02);
+            --glass: rgba(255, 255, 255, 0.05);
             --border: 1px solid rgba(0, 255, 204, 0.3);
             --glow: 0 0 40px rgba(0, 255, 204, 0.4);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             background: #000;
@@ -25,9 +25,10 @@
             font-family: 'Space Grotesk', sans-serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            cursor: default; /* Fallback for mobile */
         }
 
-        /* --- 8GB BANDWIDTH OVERLOAD (TRIPLE VIDEO STACK) --- */
+        /* --- BACKGROUND & EFFECTS --- */
         #bg-master {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             z-index: -10; filter: contrast(1.2) brightness(0.4);
@@ -41,98 +42,122 @@
             z-index: 100; pointer-events: none; background-size: 100% 3px, 3px 100%;
         }
 
-        /* --- CUSTOM QUANTUM CURSOR --- */
-        #aura-cursor {
-            width: 300px; height: 300px;
-            background: radial-gradient(circle, rgba(0, 255, 204, 0.15) 0%, transparent 70%);
-            position: fixed; pointer-events: none; z-index: 9999;
-            transform: translate(-50%, -50%); transition: 0.05s ease-out;
+        /* PC ONLY: Custom Cursor */
+        @media (min-width: 992px) {
+            body { cursor: none; }
+            #aura-cursor {
+                width: 300px; height: 300px;
+                background: radial-gradient(circle, rgba(0, 255, 204, 0.15) 0%, transparent 70%);
+                position: fixed; pointer-events: none; z-index: 9999;
+                transform: translate(-50%, -50%); transition: 0.05s ease-out;
+            }
         }
 
-        /* --- NAVIGATION TERMINAL --- */
+        /* --- NAVIGATION --- */
         nav {
-            position: fixed; top: 0; width: 100%; padding: 40px 5%;
+            position: fixed; top: 0; width: 100%; padding: 30px 5%;
             display: flex; justify-content: space-between; align-items: center;
             z-index: 1000; background: linear-gradient(to bottom, #000, transparent);
         }
-        .logo { font-family: 'Syncopate'; font-size: 2.5rem; letter-spacing: 15px; color: var(--neon); text-shadow: var(--glow); }
+        .logo { 
+            font-family: 'Syncopate'; font-size: 1.8rem; font-weight: 700;
+            letter-spacing: 5px; color: var(--neon); text-shadow: var(--glow); 
+        }
 
-        /* --- SECTION SYSTEM --- */
-        section { min-height: 100vh; padding: 150px 10%; position: relative; }
+        /* --- HERO SECTION --- */
+        .hero { 
+            min-height: 100vh; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; text-align: center; 
+            padding: 0 20px;
+        }
+        
+        .hero-tag {
+            font-family: 'Michroma'; letter-spacing: 10px; font-size: 0.8rem;
+            color: #aaa; margin-bottom: 20px; text-transform: uppercase;
+        }
 
-        /* --- HERO: THE GOD-RAY --- */
-        .hero { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
         .hero h1 {
-            font-family: 'Syncopate'; font-size: clamp(4rem, 18vw, 15rem);
-            line-height: 0.8; margin-bottom: 20px;
-            background: linear-gradient(180deg, #fff 40%, var(--neon));
+            font-family: 'Syncopate'; font-size: clamp(3rem, 12vw, 10rem);
+            line-height: 0.9; margin-bottom: 40px;
+            background: linear-gradient(180deg, #fff 20%, var(--neon));
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 50px rgba(0, 255, 204, 0.6));
+            filter: drop-shadow(0 0 30px rgba(0, 255, 204, 0.3));
         }
 
-        /* --- THE ULTIMATE XDRIVE VAULT --- */
-        .vault-trigger {
-            margin-top: 60px;
-            padding: 40px 120px;
-            font-family: 'Michroma';
-            background: transparent;
-            border: 2px solid var(--neon);
-            color: var(--neon);
-            text-decoration: none;
-            font-size: 1.5rem;
-            letter-spacing: 15px;
-            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-            box-shadow: 0 0 50px rgba(0, 255, 204, 0.2);
+        /* --- DUAL BUTTON SYSTEM --- */
+        .download-grid {
+            display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;
+            width: 100%; max-width: 900px; margin-top: 20px;
         }
-        .vault-trigger:hover {
+
+        .vault-btn {
+            padding: 25px 40px;
+            font-family: 'Michroma'; text-transform: uppercase;
+            text-decoration: none; font-size: 1rem; letter-spacing: 3px;
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+            transition: all 0.4s ease;
+            display: flex; align-items: center; justify-content: center; gap: 15px;
+            min-width: 280px; position: relative;
+        }
+
+        /* Windows Button (Active) */
+        .btn-win {
+            background: rgba(0, 255, 204, 0.1); border: 2px solid var(--neon);
+            color: var(--neon); box-shadow: 0 0 30px rgba(0, 255, 204, 0.1);
+        }
+        .btn-win:hover {
             background: var(--neon); color: #000;
-            box-shadow: 0 0 150px var(--neon);
-            transform: scale(1.15) rotate(-2deg);
+            box-shadow: 0 0 80px var(--neon); transform: translateY(-5px);
         }
 
-        /* --- CONTENT: BENTO-MAX ARCHITECTURE --- */
-        .bento-container {
-            display: grid; grid-template-columns: repeat(6, 1fr);
-            grid-template-rows: repeat(2, 400px); gap: 25px;
+        /* Android Button (Locked) */
+        .btn-android {
+            background: rgba(255, 255, 255, 0.05); border: 2px solid #555;
+            color: #888; cursor: not-allowed;
         }
-        .bento-card {
-            background: var(--glass); border: var(--border);
-            backdrop-filter: blur(40px); padding: 50px;
-            display: flex; flex-direction: column; justify-content: flex-end;
-            transition: 0.5s; position: relative;
+        .btn-android:hover {
+            border-color: #fff; color: #fff;
         }
-        .bento-card:hover { border-color: #fff; transform: translateY(-15px); }
-        .bento-card h2 { font-family: 'Syncopate'; font-size: 1.5rem; color: var(--neon); margin-bottom: 20px; }
-        .bento-card p { font-size: 1.1rem; line-height: 1.6; opacity: 0.6; }
-
-        .span-4 { grid-column: span 4; }
-        .span-2 { grid-column: span 2; }
-
-        /* --- LEADERSHIP: SUPREME ARCHITECTS --- */
-        .owners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-        .owner-vault {
-            background: linear-gradient(145deg, rgba(112,0,255,0.1), transparent);
-            border-left: 8px solid var(--void); padding: 80px;
-            position: relative;
+        .status-badge {
+            font-size: 0.6rem; background: #333; color: #fff; padding: 3px 8px;
+            border-radius: 4px; position: absolute; top: -10px; right: 10px;
         }
-        .rank-tag { font-family: 'Syncopate'; font-size: 0.7rem; color: var(--void); letter-spacing: 10px; }
-        .owner-name { font-family: 'Michroma'; font-size: 4rem; margin: 20px 0; }
-        .owner-bio { font-size: 1.2rem; line-height: 1.8; opacity: 0.7; }
 
-        footer { padding: 100px; text-align: center; opacity: 0.2; letter-spacing: 15px; border-top: 1px solid #111; }
+        /* --- CREDITS SECTION --- */
+        .credits-section { padding: 100px 10%; background: linear-gradient(to top, #000, transparent); }
+        .owners-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 40px; margin-top: 60px; 
+        }
+        
+        .owner-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.03), transparent);
+            border-left: 5px solid var(--void); padding: 40px;
+            position: relative; transition: 0.3s;
+        }
+        .owner-card:hover { background: rgba(255,255,255,0.08); transform: translateX(10px); }
+        
+        .rank { font-family: 'Syncopate'; font-size: 0.7rem; letter-spacing: 5px; color: var(--void); }
+        .name { font-family: 'Michroma'; font-size: 2rem; margin: 15px 0; color: #fff; }
+        .role { font-size: 0.9rem; opacity: 0.6; line-height: 1.6; }
 
-        @media (max-width: 1200px) {
-            .bento-container { grid-template-columns: 1fr; grid-template-rows: auto; }
-            .owners-grid { grid-template-columns: 1fr; }
-            .span-4, .span-2 { grid-column: span 1; }
+        footer { 
+            padding: 50px; text-align: center; font-size: 0.8rem; 
+            letter-spacing: 5px; opacity: 0.4; border-top: 1px solid #222; 
+        }
+
+        /* --- MOBILE OPTIMIZATION --- */
+        @media (max-width: 768px) {
+            .download-grid { flex-direction: column; align-items: center; gap: 20px; }
+            .vault-btn { width: 90%; text-align: center; }
+            .hero h1 { letter-spacing: 0px; } /* Prevent horizontal scroll */
         }
     </style>
 </head>
 <body>
 
     <div id="aura-cursor"></div>
+    
     <div class="crt-scanlines"></div>
 
     <div id="bg-master">
@@ -143,82 +168,58 @@
 
     <nav>
         <div class="logo">XGAMES</div>
-        <div style="font-family: 'Michroma'; font-size: 0.6rem; letter-spacing: 5px;">
-            INF-STATUS: <span style="color: var(--neon);">OVERLOAD</span>
+        <div style="font-family: 'Michroma'; font-size: 0.6rem; letter-spacing: 2px; color: #aaa;">
+            SYS.ONLINE
         </div>
     </nav>
 
     <section class="hero">
-        <p style="letter-spacing: 25px; color: #444; font-weight: bold; margin-bottom: 20px;">GOD-TIER DEPLOYMENT</p>
-        <h1>XGAMES</h1>
+        <div class="hero-tag">UNLEASH THE POWER</div>
+        <h1>XDRIVE</h1>
         
-        <a href="YOUR_LINK_HERE" class="vault-trigger">
-            DOWNLOAD XDRIVE
-        </a>
-    </section>
+        <div class="download-grid">
+            <a href="https://download1980.mediafire.com/imroou9ju8cg5kdOpFSiL7o-A5RwxuAjahOpessGvoGs4sxYl5A8vTenptHohQbr7za8r4e9SWG_8niHAyXz41bs5HFyp6hhHywqj7Y44hH9l3MYT9q7dFonTMC2SQsrZu07TdRCx0aqz4dZOc7VinGLBtWPNZZqyhu4AYtfQ4Mkfg/2z6684l0ndgj0yb/XDRIVE.exe" class="vault-btn btn-win">
+                <i class="fab fa-windows"></i> DOWNLOAD FOR PC
+            </a>
 
-    <section>
-        <h2 style="font-family: 'Syncopate'; font-size: 3rem; margin-bottom: 80px; letter-spacing: 10px;">CORE SPECS</h2>
-        <div class="bento-container">
-            <div class="bento-card span-4">
-                <h2>8K QUANTUM TEXTURES</h2>
-                <p>XDrive bypasses standard GPU limits to inject cinema-grade assets directly into the game engine's memory buffer.</p>
-            </div>
-            <div class="bento-card span-2">
-                <h2>VAULT-S7</h2>
-                <p>Military-grade data protection layer.</p>
-            </div>
-            <div class="bento-card span-2">
-                <h2>NEURAL SYNC</h2>
-                <p>Adaptive AI frame generation.</p>
-            </div>
-            <div class="bento-card span-4">
-                <h2>HYPER-BAND TUNNELS</h2>
-                <p>Optimized data routing managed by the Ayanh4x backbone network, ensuring 8GB downloads reach peak speeds instantly.</p>
+            <div class="vault-btn btn-android" onclick="alert('SYSTEM NOTICE: XDrive Mobile Protocol is currently under development. Release scheduled for late 2026.')">
+                <span class="status-badge">SOON</span>
+                <i class="fab fa-android"></i> ANDROID VER.
             </div>
         </div>
     </section>
 
-    <section>
-        <h2 style="font-family: 'Syncopate'; font-size: 3rem; margin-bottom: 80px; letter-spacing: 10px; text-align: center;">THE ARCHITECTS</h2>
+    <section class="credits-section">
+        <h2 style="font-family: 'Syncopate'; text-align: center; margin-bottom: 50px; font-size: 2rem;">THE ARCHITECTS</h2>
+        
         <div class="owners-grid">
-            <div class="owner-vault">
-                <span class="rank-tag">SUPREME FOUNDER</span>
-                <h2 class="owner-name">AYANH4X</h2>
-                <p class="owner-bio">The visionary mind behind the XGAMES ecosystem. Architecting the future of high-fidelity gaming tools and global infrastructure strategy.</p>
+            <div class="owner-card">
+                <div class="rank">FOUNDER & CEO</div>
+                <div class="name">AYANH4X</div>
+                <div class="role">The visionary core. Designing the architecture of XDrive to bypass limits and deliver raw performance.</div>
             </div>
-            <div class="owner-vault" style="border-color: var(--neon);">
-                <span class="rank-tag" style="color: var(--neon);">CORE OPERATOR</span>
-                <h2 class="owner-name" style="color: var(--neon);">MAHMUDUL18RIP</h2>
-                <p class="owner-bio">The technical vanguard. Directing the high-bitrate data pipelines and the security protocols that define the XDrive experience.</p>
+
+            <div class="owner-card" style="border-color: var(--neon);">
+                <div class="rank" style="color: var(--neon);">CO-OWNER & DEV</div>
+                <div class="name" style="color: var(--neon);">MAHMUDUL18RIP</div>
+                <div class="role">The security fortress. Ensuring every byte of data is encrypted, secure, and optimized for 8K delivery.</div>
             </div>
         </div>
     </section>
 
     <footer>
-        XGAMES CORPORATE // EST 2026 // LIMITLESS POWER
+        &copy; 2026 XGAMES INC // ALL RIGHTS RESERVED
     </footer>
 
     <script>
-        // Aura Mouse Light
-        const aura = document.getElementById('aura-cursor');
-        document.addEventListener('mousemove', (e) => {
-            aura.style.left = e.clientX + 'px';
-            aura.style.top = e.clientY + 'px';
-        });
-
-        // GPU Parallax Effect on Cards
-        document.querySelectorAll('.bento-card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0, 255, 204, 0.15), transparent)`;
+        // Aura Mouse Light (Only active on Desktop)
+        if (window.matchMedia("(min-width: 992px)").matches) {
+            const aura = document.getElementById('aura-cursor');
+            document.addEventListener('mousemove', (e) => {
+                aura.style.left = e.clientX + 'px';
+                aura.style.top = e.clientY + 'px';
             });
-            card.addEventListener('mouseleave', () => {
-                card.style.background = 'var(--glass)';
-            });
-        });
+        }
     </script>
 </body>
 </html>
