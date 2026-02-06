@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XGAMES | Ayanh4x </title>
+    <title>RIZZ GAMES | THE ULTIMATE HUB</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Michroma&family=Space+Grotesk:wght@300;500;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     
     <style>
         :root {
-            --neon: #00ffcc;
-            --void: #7000ff;
+            --neon: #00ffcc;       /* Cyan for Windows/System */
+            --droid: #3DDC84;      /* Android Green */
+            --void: #7000ff;       /* Purple for Brand */
             --glass: rgba(255, 255, 255, 0.05);
             --border: 1px solid rgba(0, 255, 204, 0.3);
             --glow: 0 0 40px rgba(0, 255, 204, 0.4);
@@ -25,7 +26,6 @@
             font-family: 'Space Grotesk', sans-serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
-            cursor: default; /* Fallback for mobile */
         }
 
         /* --- BACKGROUND & EFFECTS --- */
@@ -100,27 +100,32 @@
             min-width: 280px; position: relative;
         }
 
-        /* Windows Button (Active) */
+        /* Windows Button Style */
         .btn-win {
-            background: rgba(0, 255, 204, 0.1); border: 2px solid var(--neon);
-            color: var(--neon); box-shadow: 0 0 30px rgba(0, 255, 204, 0.1);
+            background: rgba(0, 255, 204, 0.05); border: 2px solid var(--neon);
+            color: var(--neon); box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
         }
         .btn-win:hover {
             background: var(--neon); color: #000;
             box-shadow: 0 0 80px var(--neon); transform: translateY(-5px);
         }
 
-        /* Android Button (Locked) */
-        .btn-android {
-            background: rgba(255, 255, 255, 0.05); border: 2px solid #555;
-            color: #888; cursor: not-allowed;
+        /* Android Button Style */
+        .btn-droid {
+            background: rgba(61, 220, 132, 0.05); border: 2px solid var(--droid);
+            color: var(--droid); box-shadow: 0 0 20px rgba(61, 220, 132, 0.1);
+            animation: pulse-green 3s infinite;
         }
-        .btn-android:hover {
-            border-color: #fff; color: #fff;
+        .btn-droid:hover {
+            background: var(--droid); color: #000;
+            box-shadow: 0 0 80px var(--droid); transform: translateY(-5px);
+            animation: none;
         }
-        .status-badge {
-            font-size: 0.6rem; background: #333; color: #fff; padding: 3px 8px;
-            border-radius: 4px; position: absolute; top: -10px; right: 10px;
+
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 10px rgba(61, 220, 132, 0.1); }
+            50% { box-shadow: 0 0 30px rgba(61, 220, 132, 0.4); }
+            100% { box-shadow: 0 0 10px rgba(61, 220, 132, 0.1); }
         }
 
         /* --- CREDITS SECTION --- */
@@ -149,8 +154,9 @@
         /* --- MOBILE OPTIMIZATION --- */
         @media (max-width: 768px) {
             .download-grid { flex-direction: column; align-items: center; gap: 20px; }
-            .vault-btn { width: 90%; text-align: center; }
-            .hero h1 { letter-spacing: 0px; } /* Prevent horizontal scroll */
+            .vault-btn { width: 90%; text-align: center; min-width: unset; }
+            .hero h1 { letter-spacing: 0px; font-size: 4rem; }
+            .hero-tag { letter-spacing: 5px; }
         }
     </style>
 </head>
@@ -167,25 +173,24 @@
     </div>
 
     <nav>
-        <div class="logo">XGAMES</div>
+        <div class="logo">RIZZ GAMES</div>
         <div style="font-family: 'Michroma'; font-size: 0.6rem; letter-spacing: 2px; color: #aaa;">
             SYS.ONLINE
         </div>
     </nav>
 
     <section class="hero">
-        <div class="hero-tag">UNLEASH THE POWER</div>
+        <div class="hero-tag">CROSS-PLATFORM DEPLOYMENT</div>
         <h1>XDRIVE</h1>
         
         <div class="download-grid">
             <a href="https://download1980.mediafire.com/imroou9ju8cg5kdOpFSiL7o-A5RwxuAjahOpessGvoGs4sxYl5A8vTenptHohQbr7za8r4e9SWG_8niHAyXz41bs5HFyp6hhHywqj7Y44hH9l3MYT9q7dFonTMC2SQsrZu07TdRCx0aqz4dZOc7VinGLBtWPNZZqyhu4AYtfQ4Mkfg/2z6684l0ndgj0yb/XDRIVE.exe" class="vault-btn btn-win">
-                <i class="fab fa-windows"></i> DOWNLOAD FOR PC
+                <i class="fab fa-windows"></i> DOWNLOAD PC
             </a>
 
-            <div class="vault-btn btn-android" onclick="alert('SYSTEM NOTICE: XDrive Mobile Protocol is currently under development. Release scheduled for late 2026.')">
-                <span class="status-badge">SOON</span>
-                <i class="fab fa-android"></i> ANDROID VER.
-            </div>
+            <a href="https://www.mediafire.com/file/9j9old6kn5rb2he/xdrive.apk/file" class="vault-btn btn-droid">
+                <i class="fab fa-android"></i> DOWNLOAD APK
+            </a>
         </div>
     </section>
 
@@ -196,7 +201,7 @@
             <div class="owner-card">
                 <div class="rank">FOUNDER & CEO</div>
                 <div class="name">AYANH4X</div>
-                <div class="role">The visionary core. Designing the architecture of XDrive to bypass limits and deliver raw performance.</div>
+                <div class="role">The visionary core. Architecting the future of Rizz Games to bypass limits and deliver raw performance.</div>
             </div>
 
             <div class="owner-card" style="border-color: var(--neon);">
@@ -208,7 +213,7 @@
     </section>
 
     <footer>
-        &copy; 2026 XGAMES INC // ALL RIGHTS RESERVED
+        &copy; 2026 RIZZ GAMES INC // ALL RIGHTS RESERVED
     </footer>
 
     <script>
